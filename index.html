@@ -55,10 +55,9 @@
             Aquí encontrarás script y executores actualizados.
         </p>
 
-        <div class="w-full max-w-md bg-white/5 border border-white/10 rounded-xl p-1.5 flex items-center gap-2 mb-12 focus-within:border-red-500/50 transition-all duration-300 backdrop-blur-sm">
-            <span class="pl-3 text-gray-500 text-xl">🔍</span>
-            <input type="text" id="search-input" placeholder="Escribe 'duels' para buscar..." class="bg-transparent w-full focus:outline-none text-sm text-white placeholder-gray-500 font-mono">
-            <button onclick="filterScripts()" class="bg-red-600 hover:bg-red-500 text-white font-bold text-xs px-4 py-2 rounded-lg transition-all">Buscar</button>
+        <div class="w-full max-w-md bg-white/5 border border-white/10 rounded-xl p-3 flex items-center gap-2 mb-12 focus-within:border-red-500/50 transition-all duration-300 backdrop-blur-sm">
+            <span class="text-gray-500 text-xl">🔍</span>
+            <input type="text" id="search-input" oninput="filterScripts()" placeholder="Escribe 'duels' para buscar..." class="bg-transparent w-full focus:outline-none text-sm text-white placeholder-gray-500 font-mono">
         </div>
 
         <div class="flex flex-col sm:flex-row gap-4 z-10">
@@ -110,7 +109,8 @@
                             <span class="font-mono text-sm text-white group-hover:text-red-400 transition-colors">SpiderHub.lua</span>
                             <p class="text-xs text-gray-500 mt-1">Auto-Farm, Teletransporte y selección de misiones.</p>
                         </div>
-                        <button onclick="copyToClipboard('loadstring(game:HttpGet(&quot;https://gist.githubusercontent.com/israelccc/04288b107da073b84f5d05d665cb64b3/raw/SpiderHUB.DUELS.lua&quot;))()', '¡Script de SpiderHub copiado!')" class="w-full sm:w-auto text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2 rounded-lg hover:bg-red-600 hover:text-white transition-all">Copiar Script</button>
+                        <input type="text" id="code-spider" class="hidden" value='loadstring(game:HttpGet("https://gist.githubusercontent.com/israelccc/04288b107da073b84f5d05d665cb64b3/raw/SpiderHUB.DUELS.lua"))()'>
+                        <button onclick="copyScript('code-spider', '¡Script de SpiderHub copiado!')" class="w-full sm:w-auto text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2 rounded-lg hover:bg-red-600 hover:text-white transition-all">Copiar Script</button>
                     </div>
 
                     <div class="script-item p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:bg-white/[0.04] transition-all group" data-keywords="duels ryshub">
@@ -118,7 +118,8 @@
                             <span class="font-mono text-sm text-white group-hover:text-red-400 transition-colors">Ryshub.lua</span>
                             <p class="text-xs text-gray-500 mt-1">Asistencia visual en mapa, configuración de cámara y controles.</p>
                         </div>
-                        <button onclick="copyToClipboard('loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Rysted/scripts/main/MurderersVSSheriffs.lua&quot;))()', '¡Script de Ryshub copiado!')" class="w-full sm:w-auto text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2 rounded-lg hover:bg-red-600 hover:text-white transition-all">Copiar Script</button>
+                        <input type="text" id="code-rys" class="hidden" value='loadstring(game:HttpGet("https://raw.githubusercontent.com/Rysted/scripts/main/MurderersVSSheriffs.lua"))()'>
+                        <button onclick="copyScript('code-rys', '¡Script de Ryshub copiado!')" class="w-full sm:w-auto text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2 rounded-lg hover:bg-red-600 hover:text-white transition-all">Copiar Script</button>
                     </div>
 
                     <p id="no-results" class="hidden text-center text-sm text-gray-500 font-mono py-4">No se encontraron scripts para esa búsqueda.</p>
@@ -158,22 +159,8 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="mt-6 p-4 bg-red-500/5 border border-red-500/10 rounded-xl text-center">
-                    <p class="text-xs text-red-400 font-mono">¿Tienes dudas sobre la instalación? Visita nuestra comunidad.</p>
-                </div>
             </div>
 
-        </div>
-    </section>
-
-    <section id="comunidad" class="max-w-7xl mx-auto px-6 pb-20">
-        <div class="p-8 rounded-3xl bg-gradient-to-r from-red-950/40 via-black to-red-950/40 border border-red-500/10 text-center relative overflow-hidden">
-            <h3 class="text-3xl font-black mb-3 text-white tracking-tight">Únete a la Red de SPIDER HUB</h3>
-            <p class="text-gray-400 text-sm max-w-xl mx-auto mb-6">Recibe notificaciones automáticas en cuanto haya novedades y comparte tus propios archivos con otros usuarios.</p>
-            <button class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl text-sm transition-all spider-glow">
-                Entrar al Servidor de Soporte
-            </button>
         </div>
     </section>
 
@@ -182,6 +169,7 @@
     </footer>
 
     <script>
+        // FILTRADO INTELIGENTE EN TIEMPO REAL
         function filterScripts() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
             const scripts = document.querySelectorAll('.script-item');
@@ -200,81 +188,50 @@
             });
 
             if (query === "duels") {
-                catalogTag.innerText = "Resultados para: Duels";
+                catalogTag.innerText = "Resultados: Duels";
                 catalogTag.className = "px-2 py-1 bg-red-500/10 text-red-400 font-mono text-[10px] rounded uppercase font-bold tracking-wider";
             } else if (query === "") {
                 catalogTag.innerText = "Lista Completa";
                 catalogTag.className = "px-2 py-1 bg-green-500/10 text-green-400 font-mono text-[10px] rounded uppercase font-bold tracking-wider";
             } else {
-                catalogTag.innerText = "Búsqueda: " + query;
+                catalogTag.innerText = "Buscando: " + query;
                 catalogTag.className = "px-2 py-1 bg-gray-500/10 text-gray-400 font-mono text-[10px] rounded uppercase font-bold tracking-wider";
             }
 
-            if (found === 0) {
-                noResults.classList.remove('hidden');
-            } else {
-                noResults.classList.add('hidden');
-            }
+            if (found === 0) noResults.classList.remove('hidden');
+            else noResults.classList.add('hidden');
         }
 
-        // Función Principal inteligente de copiado
-        function copyToClipboard(text, message) {
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(text).then(() => {
-                    showToast(message);
-                }).catch(err => {
-                    fallbackCopy(text, message);
-                });
-            } else {
-                fallbackCopy(text, message);
-            }
-        }
-
-        // Sistema de copiado alternativo forzado para navegadores móviles sin HTTPS activo aún
-        function fallbackCopy(text, message) {
-            const textArea = document.createElement("textarea");
-            textArea.value = text;
-            textArea.style.top = "0";
-            textArea.style.left = "0";
-            textArea.style.position = "fixed";
-            textArea.style.opacity = "0";
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            textArea.setSelectionRange(0, 99999);
+        // COPIADO DEFINITIVO ULTRA COMPATIBLE CON MÓVILES
+        function copyScript(inputId, message) {
+            const inputElement = document.getElementById(inputId);
+            
+            // Hacemos el input visible un milisegundo de forma controlada para forzar el foco del sistema móvil
+            inputElement.classList.remove('hidden');
+            inputElement.select();
+            inputElement.setSelectionRange(0, 99999); // Rango extendido para iOS/Android
 
             try {
-                const successful = document.execCommand('copy');
-                if(successful) {
-                    showToast(message);
-                } else {
-                    console.error('No se pudo copiar el script');
-                }
+                // Ejecución nativa por comando (Garantiza ejecución sin bloqueos HTTPS de API web)
+                document.execCommand('copy');
+                
+                // Mostrar alerta visual fluida
+                const toast = document.getElementById('custom-toast');
+                document.getElementById('toast-message').innerText = message;
+                toast.classList.remove('translate-y-24', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+                
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-24', 'opacity-0');
+                }, 2500);
             } catch (err) {
-                console.error('Error en el sistema alternativo de copia: ', err);
+                alert("Error al copiar automáticamente. Por favor selecciona el texto manualmente.");
             }
-            document.body.removeChild(textArea);
-        }
-
-        // Mostrar notificación animada
-        function showToast(message) {
-            const toast = document.getElementById('custom-toast');
-            document.getElementById('toast-message').innerText = message;
             
-            toast.classList.remove('translate-y-24', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
-            
-            setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-24', 'opacity-0');
-            }, 2500);
+            // Lo volvemos a ocultar de la vista del usuario
+            inputElement.add('hidden');
         }
-
-        document.getElementById('search-input').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                filterScripts();
-            }
-        });
     </script>
 
 </body>
