@@ -46,12 +46,12 @@
         </h1>
 
         <p class="text-gray-300 text-base md:text-xl max-w-3xl mb-10 font-medium tracking-wide">
-            Selecciona una categoría para ver los archivos disponibles.
+            Aquí encontrarás scripts y ejecutores actualizados. Selecciona una categoría:
         </p>
 
         <div class="flex bg-black/40 p-2 rounded-2xl border border-white/10 gap-2 z-10 w-full max-w-md mb-12">
             <button id="btn-tab-scripts" onclick="switchTab('scripts')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow">
-                📜 Ver Scripts
+                📜 Catálogo de Scripts
             </button>
             <button id="btn-tab-executors" onclick="switchTab('executors')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5">
                 ⚙ Ejecutores
@@ -69,23 +69,27 @@
                 <span class="px-2 py-1 bg-red-500/10 text-red-400 font-mono text-[10px] rounded uppercase font-bold tracking-wider">Online</span>
             </div>
             
-            <div class="space-y-4">
-                <div class="p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:bg-white/[0.04] transition-all group">
-                    <div>
-                        <span class="font-mono text-sm text-white group-hover:text-red-400 transition-colors">SpiderHub.lua</span>
-                        <p class="text-xs text-gray-500 mt-1">Auto-Farm, Teletransporte y selección de misiones.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+                    <div class="mb-4">
+                        <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block">SpiderHub.lua</span>
+                        <p class="text-xs text-gray-400 mt-2">Auto-Farm, Teletransporte y selección de misiones.</p>
                     </div>
-                    <input type="text" id="code-spider" class="hidden" value='loadstring(game:HttpGet("https://gist.githubusercontent.com/israelccc/04288b107da073b84f5d05d665cb64b3/raw/SpiderHUB.DUELS.lua"))()'>
-                    <button onclick="copyScript('code-spider', '¡Script de SpiderHub copiado!')" class="w-full sm:w-auto text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2 rounded-lg hover:bg-red-600 hover:text-white transition-all">Copiar Script</button>
+                    <textarea id="code-spider" class="hidden">loadstring(game:HttpGet("https://gist.githubusercontent.com/israelccc/04288b107da073b84f5d05d665cb64b3/raw/SpiderHUB.DUELS.lua"))()</textarea>
+                    <button onclick="copyScript('code-spider', '¡Script de SpiderHub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all">
+                        Copiar Script
+                    </button>
                 </div>
 
-                <div class="p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:bg-white/[0.04] transition-all group">
-                    <div>
-                        <span class="font-mono text-sm text-white group-hover:text-red-400 transition-colors">Ryshub.lua</span>
-                        <p class="text-xs text-gray-500 mt-1">Asistencia visual en mapa, configuración de cámara y controles.</p>
+                <div class="p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+                    <div class="mb-4">
+                        <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block">Ryshub.lua</span>
+                        <p class="text-xs text-gray-400 mt-2">Asistencia visual en mapa, configuración de cámara y controles.</p>
                     </div>
-                    <input type="text" id="code-rys" class="hidden" value='loadstring(game:HttpGet("https://raw.githubusercontent.com/Rysted/scripts/main/MurderersVSSheriffs.lua"))()'>
-                    <button onclick="copyScript('code-rys', '¡Script de Ryshub copiado!')" class="w-full sm:w-auto text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2 rounded-lg hover:bg-red-600 hover:text-white transition-all">Copiar Script</button>
+                    <textarea id="code-rys" class="hidden">loadstring(game:HttpGet("https://raw.githubusercontent.com/Rysted/scripts/main/MurderersVSSheriffs.lua"))()</textarea>
+                    <button onclick="copyScript('code-rys', '¡Script de Ryshub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all">
+                        Copiar Script
+                    </button>
                 </div>
             </div>
         </div>
@@ -130,7 +134,7 @@
     </section>
 
     <footer class="border-t border-white/[0.03] bg-black/60 py-8 text-center text-xs font-mono text-gray-600">
-        &copy; 2026 SPIDER HUB // DESCARGAS 100% OPERATIVAS.
+        &copy; 2026 SPIDER HUB // LINKS DE DESCARGA DIRECTOS.
     </footer>
 
     <script>
@@ -159,18 +163,20 @@
             }
         }
 
-        function copyScript(inputId, message) {
-            const inputElement = document.getElementById(inputId);
+        function copyScript(textareaId, successMessage) {
+            const area = document.getElementById(textareaId);
             
-            inputElement.classList.remove('hidden');
-            inputElement.select();
-            inputElement.setSelectionRange(0, 99999);
+            // Mostrar temporalmente para poder seleccionarlo
+            area.classList.remove('hidden');
+            area.select();
+            area.setSelectionRange(0, 99999);
 
             try {
                 document.execCommand('copy');
                 
                 const toast = document.getElementById('custom-toast');
-                document.getElementById('toast-message').innerText = message;
+                document.getElementById('toast-message').innerText = successMessage;
+                
                 toast.classList.remove('translate-y-24', 'opacity-0');
                 toast.classList.add('translate-y-0', 'opacity-100');
                 
@@ -179,10 +185,11 @@
                     toast.classList.add('translate-y-24', 'opacity-0');
                 }, 2500);
             } catch (err) {
-                alert("Error al copiar automáticamente.");
+                alert("Error al copiar, por favor hazlo manualmente.");
             }
             
-            inputElement.classList.add('hidden');
+            // Volver a ocultar
+            area.classList.add('hidden');
         }
     </script>
 
