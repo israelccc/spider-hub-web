@@ -2,230 +2,135 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SPIDER HUB // By Israel CC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPIDER HUB // Scripts & Executores</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* FONDO ANIMADO SPIDER-VERSE */
         body {
-            background-color: #060204;
-            background-image: 
-                radial-gradient(circle at 10% 10%, rgba(185, 28, 28, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(185, 28, 28, 0.15) 0%, transparent 40%),
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
-            background-attachment: fixed;
-            animation: backgroundShift 20s infinite linear;
+            background: radial-gradient(circle at top center, #3a050e 0%, #060204 100%);
         }
-
-        @keyframes backgroundShift {
-            0% { background-position: 0% 0%, 0% 0%, 0px 0px, 0px 0px; }
-            100% { background-position: 0% 0%, 0% 0%, 30px 30px, 30px 30px; }
+        .spider-glow {
+            box-shadow: 0 0 35px -5px rgba(239, 68, 68, 0.4);
         }
-
-        /* EFECTOS DE NEÓN PREMIUM */
-        .neon-border {
-            box-shadow: 0 0 10px rgba(239, 68, 68, 0.3), inset 0 0 5px rgba(239, 68, 68, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.4);
-        }
-
-        .neon-text-red {
-            text-shadow: 0 0 7px rgba(239, 68, 68, 0.8), 0 0 12px rgba(239, 68, 68, 0.5);
-        }
-
-        .neon-text-white {
-            text-shadow: 0 0 7px rgba(255, 255, 255, 0.5);
-        }
-
-        /* GLITCH EFFECT PARA EL TITULO */
-        .glitch {
-            position: relative;
-        }
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #060204;
-        }
-        .glitch::before {
-            left: 2px;
-            text-shadow: -2px 0 #ff00c1;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim 5s infinite linear alternate-reverse;
-        }
-        .glitch::after {
-            left: -2px;
-            text-shadow: -2px 0 #00fff9;
-            clip: rect(85px, 450px, 140px, 0);
-            animation: glitch-anim 3s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim {
-            0% { clip: rect(31px, 9999px, 94px, 0); }
-            4% { clip: rect(87px, 9999px, 42px, 0); }
-            100% { clip: rect(67px, 9999px, 100px, 0); }
-        }
-
-        /* ANIMACIÓN DE BOTONES */
-        .btn-spider {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .btn-spider:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
-        }
-        .btn-spider::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
-        }
-        .btn-spider:hover::after {
-            left: 100%;
-        }
-
-        /* Ocultar input de copiado */
-        .copy-input {
-            position: absolute;
-            left: -9999px;
-            opacity: 0;
+        .neon-text {
+            text-shadow: 0 0 15px rgba(239, 68, 68, 0.7);
         }
     </style>
 </head>
 <body class="text-gray-200 min-h-screen font-sans antialiased overflow-x-hidden">
 
-    <div id="custom-toast" class="fixed bottom-5 right-5 bg-black border-2 border-red-500 text-white px-6 py-3 rounded-xl shadow-[0_0_15px_rgba(239,68,68,0.5)] font-mono text-sm transform translate-y-24 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
-        <span class="text-red-500 neon-text-red">🕷</span> <span id="toast-message" class="neon-text-white">Copiado</span>
+    <div id="custom-toast" class="fixed bottom-5 right-5 bg-black/90 border border-red-500/30 text-white px-5 py-3 rounded-xl shadow-2xl font-mono text-xs transform translate-y-24 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
+        <span class="text-red-500">✔</span> <span id="toast-message">Copiado con éxito</span>
     </div>
 
-    <nav class="border-b border-red-500/30 bg-black/80 backdrop-blur-lg sticky top-0 z-50 neon-border">
+    <nav class="border-b border-red-500/10 bg-black/50 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="text-3xl font-black tracking-widest text-red-500 glitch neon-text-red cursor-pointer" data-text="SPIDER//HUB">
+            <div class="text-2xl font-black tracking-widest text-red-500 hover:scale-105 transition-transform duration-200 cursor-pointer neon-text">
                 SPIDER//HUB
             </div>
             <div class="flex items-center gap-4">
-                <div class="hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/40 text-xs text-red-300 font-mono neon-border">
-                    <span class="text-red-500">USER::</span> ISRAEL CC
+                <div class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-xs text-red-400 font-mono">
+                    BY: ISRAEL CC
                 </div>
-                <div class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-950/30 border border-green-500/40 text-xs text-green-300 font-mono shadow-[0_0_10px_rgba(34,197,94,0.3)]">
-                    <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.7)]"></span> NETWORK::ONLINE
+                <div class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-xs text-red-400 font-mono">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> SERVIDORES ONLINE
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 pt-24 pb-16 flex flex-col items-center text-center relative">
-        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-950/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <main class="max-w-7xl mx-auto px-6 pt-20 pb-12 flex flex-col items-center text-center relative">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-red-600/10 rounded-full blur-[150px] pointer-events-none"></div>
 
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono bg-black text-red-400 border-2 border-red-500/50 mb-8 tracking-widest shadow-[0_0_10px_rgba(239,68,68,0.3)]">
-            <span class="animate-pulse">>>></span> CENTRAL_DATABASE // ACCESS_GRANTED <span class="animate-pulse"><<<</span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-red-500/10 text-red-400 border border-red-500/30 mb-6 tracking-widest">
+            PANEL DE CONTROL // PRINCIPAL
         </span>
 
-        <h1 class="text-7xl md:text-9xl font-black tracking-tighter mb-6 text-white uppercase select-none relative glitch" data-text="SPIDER HUB">
-            SPIDER <span class="bg-clip-text text-transparent bg-gradient-to-b from-red-400 via-red-600 to-red-800 neon-text-red">HUB</span>
+        <h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-4 text-white uppercase select-none">
+            SPIDER <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-rose-600 to-red-700 neon-text">HUB</span>
         </h1>
 
-        <p class="text-gray-400 text-lg md:text-2xl max-w-3xl mb-12 font-light tracking-wide neon-text-white">
-            Protocolos LUA y herramientas de inyección actualizadas para <span class="text-red-400 font-medium">ROBLOX</span>. Selecciona módulo:
+        <p class="text-gray-300 text-base md:text-xl max-w-3xl mb-10 font-medium tracking-wide">
+            Aquí encontrarás scripts y ejecutores actualizados. Selecciona una categoría:
         </p>
 
-        <div class="w-full max-w-md mx-auto z-10 mb-16 px-4">
-            <div class="flex bg-black p-1.5 rounded-2xl border-2 border-red-500/30 gap-2 shadow-[0_0_20px_rgba(0,0,0,0.8)] neon-border w-full justify-center">
-                <button id="btn-tab-scripts" onclick="switchTab('scripts')" class="btn-spider w-1/2 py-3.5 text-xs font-black rounded-xl transition-all duration-300 bg-red-700 text-white shadow-[0_0_15px_rgba(239,68,68,0.5)] cursor-pointer uppercase tracking-wider select-none">
-                    [ 📜 SCRIPTS ]
+        <div class="w-full max-w-md mx-auto z-10 mb-12">
+            <div class="flex bg-black/40 p-2 rounded-2xl border border-white/10 gap-2 w-full justify-center">
+                <button id="btn-tab-scripts" onclick="switchTab('scripts')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer" style="-webkit-tap-highlight-color: transparent;">
+                    📜 Catálogo de Scripts
                 </button>
-                <button id="btn-tab-executors" onclick="switchTab('executors')" class="btn-spider w-1/2 py-3.5 text-xs font-bold rounded-xl transition-all duration-300 text-gray-500 bg-black hover:text-white hover:bg-gray-900 border border-gray-800 hover:border-red-500/50 cursor-pointer uppercase tracking-wider select-none">
-                    [ ⚙ INYECTORES ]
+                <button id="btn-tab-executors" onclick="switchTab('executors')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer" style="-webkit-tap-highlight-color: transparent;">
+                    ⚙ Ejecutores
                 </button>
             </div>
         </div>
     </main>
 
-    <section class="max-w-5xl mx-auto px-6 pb-28 relative">
+    <section class="max-w-4xl mx-auto px-6 pb-24">
         
-        <div id="section-scripts" style="display: block;" class="p-6 md:p-10 rounded-3xl bg-black/60 backdrop-blur-md border-2 border-red-500/20 shadow-[0_0_30px_rgba(0,0,0,0.5)] neon-border transition-all duration-500">
-            <div class="flex items-center justify-between mb-8 border-b-2 border-red-500/20 pb-6 gap-4">
-                <h3 class="text-2xl md:text-3xl font-black text-white flex items-center gap-3 uppercase tracking-tight neon-text-white">
-                    <span class="text-red-500 neon-text-red">./</span> Archivos_LUA
+        <div id="section-scripts" style="display: block;" class="p-6 md:p-8 rounded-2xl bg-black/40 border border-white/[0.03] hover:border-red-500/20 transition-all duration-300">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
+                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                    <span class="text-red-500">&lt;/&gt;</span> Lista de Scripts
                 </h3>
-                <span class="px-3 py-1 bg-red-950/50 text-red-300 font-mono text-xs rounded border border-red-500/40 neon-border animate-pulse shrink-0">STATUS::SECURE</span>
+                <span class="w-fit px-2 py-1 bg-red-500/10 text-red-400 font-mono text-[10px] rounded uppercase font-bold tracking-wider">STATUS::SECURE</span>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="p-6 bg-black border-2 border-gray-800 rounded-2xl flex flex-col justify-between transition-all hover:border-red-500/50 group hover:shadow-[0_0_15px_rgba(239,68,68,0.2)]">
-                    <div class="mb-5">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-red-500 font-mono">#</span>
-                            <span class="font-mono text-lg font-bold text-white group-hover:text-red-400 transition-colors block neon-text-white">SpiderHub.lua</span>
-                        </div>
-                        <p class="text-sm text-gray-400 font-light leading-relaxed pl-5 border-l-2 border-gray-800 group-hover:border-red-500/30">Protocolo avanzado: Auto-Farm universal, Teletransporte de precisión y gestor de misiones automatizado.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+                    <div class="mb-4">
+                        <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block">SpiderHub.lua</span>
+                        <p class="text-xs text-gray-400 mt-2">Auto-Farm, Teletransporte y selección de misiones.</p>
                     </div>
-                    <input type="text" id="code-spider" class="copy-input" value='loadstring(game:HttpGet("https://gist.githubusercontent.com/israelccc/04288b107da073b84f5d05d665cb64b3/raw/SpiderHUB.DUELS.lua"))()'>
-                    <button onclick="copyScript('code-spider', 'Protocolo SpiderHub copiado')" class="btn-spider w-full text-xs font-black bg-red-950/50 text-red-300 border-2 border-red-500/30 px-5 py-3 rounded-xl hover:bg-red-600 hover:text-white hover:border-red-600 transition-all cursor-pointer uppercase tracking-widest">
-                        Ejecutar Copiado
+                    <button onclick="copyScript('loadstring(game:HttpGet(\'https://gist.githubusercontent.com/israelccc/04288b107da073b84f5d05d665cb64b3/raw/SpiderHUB.DUELS.lua\'))()', '¡Script de SpiderHub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
+                        Copiar Script
                     </button>
                 </div>
 
-                <div class="p-6 bg-black border-2 border-gray-800 rounded-2xl flex flex-col justify-between transition-all hover:border-red-500/50 group hover:shadow-[0_0_15px_rgba(239,68,68,0.2)]">
-                    <div class="mb-5">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-red-500 font-mono">#</span>
-                            <span class="font-mono text-lg font-bold text-white group-hover:text-red-400 transition-colors block neon-text-white">Ryshub.lua</span>
-                        </div>
-                        <p class="text-sm text-gray-400 font-light leading-relaxed pl-5 border-l-2 border-gray-800 group-hover:border-red-500/30">Módulo de renderizado: Asistencia visual (ESP) en mapa, bypass de cámara y optimización de controles de red.</p>
+                <div class="p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+                    <div class="mb-4">
+                        <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block">Ryshub.lua</span>
+                        <p class="text-xs text-gray-400 mt-2">Asistencia visual en mapa, configuración de cámara y controles.</p>
                     </div>
-                    <input type="text" id="code-rys" class="copy-input" value='loadstring(game:HttpGet("https://raw.githubusercontent.com/Rysted/scripts/main/MurderersVSSheriffs.lua"))()'>
-                    <button onclick="copyScript('code-rys', 'Módulo Ryshub copiado')" class="btn-spider w-full text-xs font-black bg-red-950/50 text-red-300 border-2 border-red-500/30 px-5 py-3 rounded-xl hover:bg-red-600 hover:text-white hover:border-red-600 transition-all cursor-pointer uppercase tracking-widest">
-                        Ejecutar Copiado
+                    <button onclick="copyScript('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/Rysted/scripts/main/MurderersVSSheriffs.lua\'))()', '¡Script de Ryshub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
+                        Copiar Script
                     </button>
                 </div>
             </div>
         </div>
 
-        <div id="section-executors" style="display: none;" class="p-6 md:p-10 rounded-3xl bg-black/60 backdrop-blur-md border-2 border-red-500/20 shadow-[0_0_30px_rgba(0,0,0,0.5)] neon-border transition-all duration-500">
-            <div class="flex items-center justify-between mb-8 border-b-2 border-red-500/20 pb-6 gap-4">
-                <h3 class="text-2xl md:text-3xl font-black text-white flex items-center gap-3 uppercase tracking-tight neon-text-white">
-                    <span class="text-red-500 neon-text-red">./</span> Hardware_Inyección
+        <div id="section-executors" style="display: none;" class="p-6 md:p-8 rounded-2xl bg-black/40 border border-white/[0.03] hover:border-red-500/20 transition-all duration-300">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
+                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                    <span>⚙</span> Descargar Ejecutores
                 </h3>
-                <span class="px-3 py-1 bg-green-950/50 text-green-300 font-mono text-xs rounded border border-green-500/40 shadow-[0_0_10px_rgba(34,197,94,0.2)] shrink-0">VERSION::LATEST</span>
+                <span class="w-fit px-2 py-1 bg-green-500/10 text-green-400 font-mono text-[10px] rounded uppercase font-bold tracking-wider">VERSION::LATEST</span>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="p-6 bg-black border-2 border-gray-800 rounded-2xl flex flex-col justify-between transition-all hover:border-red-500/50 group">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:border-red-500/30 transition-all">
                     <div>
-                        <div class="flex justify-between items-center mb-3 gap-2">
-                            <h4 class="font-mono text-base md:text-lg font-bold text-white neon-text-white truncate">Delta Mobil [GLOBAL]</h4>
-                            <span class="text-[10px] bg-green-950 text-green-300 px-2 py-0.5 rounded-md font-mono font-bold border border-green-500/30 shadow-[0_0_5px_rgba(34,197,94,0.2)] shrink-0">v2.721</span>
+                        <div class="flex justify-between items-center mb-2 gap-2">
+                            <h4 class="font-bold text-sm text-white truncate">Delta Mobil</h4>
+                            <span class="text-[9px] bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded font-mono font-bold shrink-0">ONLINE</span>
                         </div>
-                        <p class="text-sm text-gray-400 font-light pl-5 border-l-2 border-gray-800 mb-6 group-hover:border-red-500/30">Anclaje de inyección estable para Android. Bypass de firmas de seguridad integrado.</p>
+                        <p class="text-[11px] text-gray-500">Versión estable estándar para dispositivos Android.</p>
                     </div>
-                    <a href="https://github.com/israelccc/spider-hub-web/releases/download/V1.0/Delta-2.721.1108.apk" target="_blank" rel="noopener noreferrer" class="btn-spider w-full text-center text-xs bg-white text-black font-black py-3.5 rounded-xl hover:bg-gray-200 transition-all block uppercase tracking-widest">
-                        Descargar Binario (.apk)
+                    <a href="https://github.com/israelccc/spider-hub-web/releases/download/V1.0/Delta-2.721.1108.apk" target="_blank" rel="noopener noreferrer" class="w-full mt-4 text-center text-xs bg-white text-black font-extrabold py-2 rounded-lg hover:bg-gray-200 transition-all block">
+                        DESCARGAR APK
                     </a>
                 </div>
 
-                <div class="p-6 bg-black border-2 border-gray-800 rounded-2xl flex flex-col justify-between transition-all hover:border-red-500/50 group">
+                <div class="p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:border-red-500/30 transition-all">
                     <div>
-                        <div class="flex justify-between items-center mb-3 gap-2">
-                            <h4 class="font-mono text-base md:text-lg font-bold text-white neon-text-white truncate">Delta VNG [SPECIAL]</h4>
-                            <span class="text-[10px] bg-cyan-950 text-cyan-300 px-2 py-0.5 rounded-md font-mono font-bold border border-cyan-500/30 shadow-[0_0_5px_rgba(6,182,212,0.2)] shrink-0">v2.720</span>
+                        <div class="flex justify-between items-center mb-2 gap-2">
+                            <h4 class="font-bold text-sm text-white truncate">Delta VNG Mobil</h4>
+                            <span class="text-[9px] bg-cyan-500/20 text-cyan-400 px-1.5 py-0.5 rounded font-mono font-bold shrink-0">DISPONIBLE</span>
                         </div>
-                        <p class="text-sm text-gray-400 font-light pl-5 border-l-2 border-gray-800 mb-6 group-hover:border-red-500/30">Edición optimizada y empaquetada de manera exclusiva para el cliente Roblox VNG.</p>
+                        <p class="text-[11px] text-gray-500">Versión optimizada para la edición de Roblox VNG.</p>
                     </div>
-                    <a href="https://github.com/israelccc/spider-hub-web/releases/download/V1.0/Delta.Vng-V2.720.1164.2.apk" target="_blank" rel="noopener noreferrer" class="btn-spider w-full text-center text-xs bg-red-600 text-white font-black py-3.5 rounded-xl hover:bg-red-500 transition-all block uppercase tracking-widest shadow-[0_0_15px_rgba(239,68,68,0.3)]">
-                        Descargar VNG (.apk)
+                    <a href="https://github.com/israelccc/spider-hub-web/releases/download/V1.0/Delta.Vng-V2.720.1164.2.apk" target="_blank" rel="noopener noreferrer" class="w-full mt-4 text-center text-xs bg-red-600 text-white font-extrabold py-2 rounded-lg hover:bg-red-500 transition-all spider-glow block">
+                        DESCARGAR VNG APK
                     </a>
                 </div>
             </div>
@@ -233,11 +138,8 @@
 
     </section>
 
-    <footer class="border-t border-red-500/20 bg-black/80 py-8 text-center text-xs font-mono text-gray-600 mt-auto neon-border">
-        <div class="max-w-7xl mx-auto px-6">
-            <p class="neon-text-white mb-2">SYS_MAIN_CORE // VER 1.0.1 // UNLAWFUL ACCESS PROHIBITED</p>
-            <p class="text-red-700">CREADO POR ISRAEL CC // // TODOS LOS DERECHOS RESERVADOS</p>
-        </div>
+    <footer class="border-t border-white/[0.03] bg-black/60 py-8 text-center text-xs font-mono text-gray-600">
+        &copy; 2026 SPIDER HUB // CREADO POR ISRAEL CC.
     </footer>
 
     <script>
@@ -251,28 +153,40 @@
                 sectionScripts.style.display = 'block';
                 sectionExecutors.style.display = 'none';
 
-                btnScripts.className = "btn-spider w-1/2 py-3.5 text-xs font-black rounded-xl transition-all duration-300 bg-red-700 text-white shadow-[0_0_15px_rgba(239,68,68,0.5)] cursor-pointer uppercase tracking-wider select-none";
-                btnExecutors.className = "btn-spider w-1/2 py-3.5 text-xs font-bold rounded-xl transition-all duration-300 text-gray-500 bg-black hover:text-white hover:bg-gray-900 border border-gray-800 hover:border-red-500/50 cursor-pointer uppercase tracking-wider select-none";
+                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer";
+                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer";
             } else {
                 sectionScripts.style.display = 'none';
                 sectionExecutors.style.display = 'block';
 
-                btnExecutors.className = "btn-spider w-1/2 py-3.5 text-xs font-black rounded-xl transition-all duration-300 bg-red-700 text-white shadow-[0_0_15px_rgba(239,68,68,0.5)] cursor-pointer uppercase tracking-wider select-none";
-                btnScripts.className = "btn-spider w-1/2 py-3.5 text-xs font-bold rounded-xl transition-all duration-300 text-gray-500 bg-black hover:text-white hover:bg-gray-900 border border-gray-800 hover:border-red-500/50 cursor-pointer uppercase tracking-wider select-none";
+                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer";
+                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer";
             }
         }
 
-        function copyScript(inputId, successMessage) {
-            const copyText = document.getElementById(inputId);
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
+        function copyScript(textToCopy, successMessage) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showToast(successMessage);
+                }).catch(() => {
+                    fallbackCopy(textToCopy, successMessage);
+                });
+            } else {
+                fallbackCopy(textToCopy, successMessage);
+            }
+        }
 
-            navigator.clipboard.writeText(copyText.value).then(() => {
-                showToast(successMessage);
-            }).catch(() => {
-                document.execCommand("copy");
-                showToast(successMessage);
-            });
+        function fallbackCopy(textToCopy, successMessage) {
+            const el = document.createElement('textarea');
+            el.value = textToCopy;
+            el.setAttribute('readonly', '');
+            el.style.position = 'absolute';
+            el.style.left = '-9999px';
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            showToast(successMessage);
         }
 
         function showToast(message) {
