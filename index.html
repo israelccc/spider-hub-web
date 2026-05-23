@@ -2,11 +2,13 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SPIDER HUB // Scripts & Executores</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
             background: radial-gradient(circle at top center, #3a050e 0%, #060204 100%);
         }
         .spider-glow {
@@ -17,16 +19,16 @@
         }
     </style>
 </head>
-<body class="text-gray-200 min-h-screen font-sans antialiased overflow-x-hidden">
+<body class="text-gray-200 min-h-screen font-sans antialiased">
 
     <div id="custom-toast" class="fixed bottom-5 right-5 bg-black/90 border border-red-500/30 text-white px-5 py-3 rounded-xl shadow-2xl font-mono text-xs transform translate-y-24 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
         <span class="text-red-500">✔</span> <span id="toast-message">Copiado con éxito</span>
     </div>
 
-    <nav class="border-b border-red-500/10 bg-black/50 backdrop-blur-md sticky top-0 z-50">
+    <nav class="border-b border-red-500/10 bg-black/50 backdrop-blur-md sticky top-0 z-50 max-w-full">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <div class="text-2xl font-black tracking-widest text-red-500 hover:scale-105 transition-transform duration-200 cursor-pointer neon-text">
-                SPIDER HUB
+                SPIDER//HUB
             </div>
             <div class="flex items-center gap-4">
                 <div class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-xs text-red-400 font-mono">
@@ -36,8 +38,8 @@
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 pt-20 pb-12 flex flex-col items-center text-center relative">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-red-600/10 rounded-full blur-[150px] pointer-events-none"></div>
+    <main class="max-w-7xl mx-auto px-4 pt-20 pb-12 flex flex-col items-center text-center relative overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[700px] h-[300px] sm:h-[450px] bg-red-600/10 rounded-full blur-[100px] sm:blur-[150px] pointer-events-none"></div>
 
         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-red-500/10 text-red-400 border border-red-500/30 mb-6 tracking-widest">
             PANEL DE CONTROL // PRINCIPAL
@@ -47,31 +49,31 @@
             SPIDER <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-rose-600 to-red-700 neon-text">HUB</span>
         </h1>
         
-        <div class="mt-2 mb-4 px-4 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-xs text-red-400 font-mono tracking-widest uppercase font-bold">
+        <div class="mt-3 mb-4 px-4 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-xs text-red-400 font-mono tracking-widest uppercase font-bold">
             BY: ISRAEL CC
         </div>
 
-        <p class="text-gray-300 text-base md:text-xl max-w-3xl mb-10 font-medium tracking-wide">
+        <p class="text-gray-300 text-base md:text-xl max-w-3xl mb-10 font-medium tracking-wide px-2">
             Aquí encontrarás scripts y ejecutores actualizados. Selecciona una categoría:
         </p>
 
-        <div class="w-full max-w-md mx-auto z-10 mb-12 px-4 shrink-0 block">
-            <div class="flex bg-black/40 p-2 rounded-2xl border border-white/10 gap-2 w-full justify-center items-center table-layout-fixed">
-                <button id="btn-tab-scripts" onclick="switchTab('scripts')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer select-none shrink-0" style="-webkit-tap-highlight-color: transparent;">
-                    📜 Catálogo de Scripts
+        <div class="w-full max-w-xs sm:max-w-md mx-auto z-10 mb-12 px-2 shrink-0 block">
+            <div class="flex bg-black/40 p-1.5 rounded-2xl border border-white/10 gap-2 w-full justify-center items-center">
+                <button id="btn-tab-scripts" onclick="switchTab('scripts')" class="w-1/2 py-3 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer select-none shrink-0" style="-webkit-tap-highlight-color: transparent;">
+                    📜 Scripts
                 </button>
-                <button id="btn-tab-executors" onclick="switchTab('executors')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer select-none shrink-0" style="-webkit-tap-highlight-color: transparent;">
+                <button id="btn-tab-executors" onclick="switchTab('executors')" class="w-1/2 py-3 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer select-none shrink-0" style="-webkit-tap-highlight-color: transparent;">
                     ⚙ Ejecutores
                 </button>
             </div>
         </div>
     </main>
 
-    <section class="max-w-4xl mx-auto px-6 pb-24">
+    <section class="max-w-4xl mx-auto px-4 pb-24 overflow-hidden">
         
-        <div id="section-scripts" style="display: block;" class="p-6 md:p-8 rounded-2xl bg-black/40 border border-white/[0.03] hover:border-red-500/20 transition-all duration-300">
+        <div id="section-scripts" style="display: block;" class="p-5 md:p-8 rounded-2xl bg-black/40 border border-white/[0.03] hover:border-red-500/20 transition-all duration-300 max-w-full">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
-                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
                     <span class="text-red-500">&lt;/&gt;</span> Lista de Scripts
                 </h3>
                 <span class="w-fit px-2 py-1 bg-red-500/10 text-red-400 font-mono text-[10px] rounded uppercase font-bold tracking-wider">STATUS::SECURE</span>
@@ -83,7 +85,7 @@
                         <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block">SpiderHub.lua</span>
                         <p class="text-xs text-gray-400 mt-2">Auto-Farm, Teletransporte y selección de misiones.</p>
                     </div>
-                    <button onclick="copyScript('loadstring(game:HttpGet(\'https://gist.githubusercontent.com/israelccc/04288b107da073b84f5d05d665cb64b3/raw/SpiderHUB.DUELS.lua\'))()', '¡Script de SpiderHub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
+                    <button onclick="copyScript('loadstring(game:HttpGet(\'https://gist.githubusercontent.com/israelccc/04288b107da073b84f5d05d665cb64b3/raw/SpiderHUB.DUELS.lua\'))()', '¡Script de SpiderHub copiado!')', '¡Script de SpiderHub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
                         Copiar Script
                     </button>
                 </div>
@@ -100,9 +102,9 @@
             </div>
         </div>
 
-        <div id="section-executors" style="display: none;" class="p-6 md:p-8 rounded-2xl bg-black/40 border border-white/[0.03] hover:border-red-500/20 transition-all duration-300">
+        <div id="section-executors" style="display: none;" class="p-5 md:p-8 rounded-2xl bg-black/40 border border-white/[0.03] hover:border-red-500/20 transition-all duration-300 max-w-full">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
-                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
                     <span>⚙</span> Descargar Ejecutores
                 </h3>
                 <span class="w-fit px-2 py-1 bg-green-500/10 text-green-400 font-mono text-[10px] rounded uppercase font-bold tracking-wider">VERSION::LATEST</span>
@@ -139,7 +141,7 @@
 
     </section>
 
-    <footer class="border-t border-white/[0.03] bg-black/60 py-8 text-center text-xs font-mono text-gray-600">
+    <footer class="border-t border-white/[0.03] bg-black/60 py-8 text-center text-xs font-mono text-gray-600 max-w-full">
         &copy; 2026 SPIDER HUB // CREADO POR ISRAEL CC.
     </footer>
 
@@ -154,14 +156,14 @@
                 sectionScripts.style.display = 'block';
                 sectionExecutors.style.display = 'none';
 
-                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer select-none shrink-0";
-                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer select-none shrink-0";
+                btnScripts.className = "w-1/2 py-3 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer select-none shrink-0";
+                btnExecutors.className = "w-1/2 py-3 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer select-none shrink-0";
             } else {
                 sectionScripts.style.display = 'none';
                 sectionExecutors.style.display = 'block';
 
-                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer select-none shrink-0";
-                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer select-none shrink-0";
+                btnExecutors.className = "w-1/2 py-3 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer select-none shrink-0";
+                btnScripts.className = "w-1/2 py-3 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer select-none shrink-0";
             }
         }
 
