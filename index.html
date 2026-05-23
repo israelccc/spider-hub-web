@@ -26,12 +26,9 @@
     <nav class="border-b border-red-500/10 bg-black/50 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <div class="text-2xl font-black tracking-widest text-red-500 hover:scale-105 transition-transform duration-200 cursor-pointer neon-text">
-                SPIDER//HUB
+                SPIDER HUB
             </div>
             <div class="flex items-center gap-4">
-                <div class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-xs text-red-400 font-mono">
-                    BY: ISRAEL CC
-                </div>
                 <div class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-xs text-red-400 font-mono">
                     <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> SERVIDORES ONLINE
                 </div>
@@ -46,20 +43,24 @@
             PANEL DE CONTROL // PRINCIPAL
         </span>
 
-        <h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-4 text-white uppercase select-none">
+        <h1 class="text-5xl md:text-8xl font-black tracking-tighter text-white uppercase select-none">
             SPIDER <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-rose-600 to-red-700 neon-text">HUB</span>
         </h1>
+        
+        <div class="mt-2 mb-4 px-4 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-xs text-red-400 font-mono tracking-widest uppercase font-bold">
+            BY: ISRAEL CC
+        </div>
 
         <p class="text-gray-300 text-base md:text-xl max-w-3xl mb-10 font-medium tracking-wide">
             Aquí encontrarás scripts y ejecutores actualizados. Selecciona una categoría:
         </p>
 
-        <div class="w-full max-w-md mx-auto z-10 mb-12">
-            <div class="flex bg-black/40 p-2 rounded-2xl border border-white/10 gap-2 w-full justify-center">
-                <button id="btn-tab-scripts" onclick="switchTab('scripts')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer" style="-webkit-tap-highlight-color: transparent;">
+        <div class="w-full max-w-md mx-auto z-10 mb-12 px-4 shrink-0 block">
+            <div class="flex bg-black/40 p-2 rounded-2xl border border-white/10 gap-2 w-full justify-center items-center table-layout-fixed">
+                <button id="btn-tab-scripts" onclick="switchTab('scripts')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer select-none shrink-0" style="-webkit-tap-highlight-color: transparent;">
                     📜 Catálogo de Scripts
                 </button>
-                <button id="btn-tab-executors" onclick="switchTab('executors')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer" style="-webkit-tap-highlight-color: transparent;">
+                <button id="btn-tab-executors" onclick="switchTab('executors')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer select-none shrink-0" style="-webkit-tap-highlight-color: transparent;">
                     ⚙ Ejecutores
                 </button>
             </div>
@@ -153,14 +154,14 @@
                 sectionScripts.style.display = 'block';
                 sectionExecutors.style.display = 'none';
 
-                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer";
-                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer";
+                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer select-none shrink-0";
+                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer select-none shrink-0";
             } else {
                 sectionScripts.style.display = 'none';
                 sectionExecutors.style.display = 'block';
 
-                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer";
-                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer";
+                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer select-none shrink-0";
+                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer select-none shrink-0";
             }
         }
 
