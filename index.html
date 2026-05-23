@@ -82,4 +82,109 @@
                 <div class="p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:bg-white/[0.04] transition-all group">
                     <div>
                         <span class="font-mono text-sm text-white group-hover:text-red-400 transition-colors">Ryshub.lua</span>
-                        <p class="text-xs text-gray-500 mt-1">Asistencia visual en mapa, configuración de cámara y controles.</p
+                        <p class="text-xs text-gray-500 mt-1">Asistencia visual en mapa, configuración de cámara y controles.</p>
+                    </div>
+                    <input type="text" id="code-rys" class="hidden" value='loadstring(game:HttpGet("https://raw.githubusercontent.com/Rysted/scripts/main/MurderersVSSheriffs.lua"))()'>
+                    <button onclick="copyScript('code-rys', '¡Script de Ryshub copiado!')" class="w-full sm:w-auto text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2 rounded-lg hover:bg-red-600 hover:text-white transition-all">Copiar Script</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-executors" class="hidden p-6 md:p-8 rounded-2xl bg-black/40 border border-white/[0.03] hover:border-red-500/20 transition-all duration-300">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                    <span>⚙</span> Descargar Ejecutores
+                </h3>
+                <span class="px-2 py-1 bg-green-500/10 text-green-400 font-mono text-[10px] rounded uppercase font-bold tracking-wider">Actualizados</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:border-red-500/30 transition-all">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold text-sm text-white">Delta Mobil</h4>
+                            <span class="text-[9px] bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded font-mono font-bold">ONLINE</span>
+                        </div>
+                        <p class="text-[11px] text-gray-500">Versión estable estándar para dispositivos Android.</p>
+                    </div>
+                    <a href="https://github.com/israelccc/spider-hub-web/releases/download/V1.0/Delta-2.721.1108.apk" class="w-full mt-4 text-center text-xs bg-white text-black font-extrabold py-2 rounded-lg hover:bg-gray-200 transition-all block">
+                        DESCARGAR APK
+                    </a>
+                </div>
+
+                <div class="p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:border-red-500/30 transition-all">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold text-sm text-white">Delta VNG Mobil</h4>
+                            <span class="text-[9px] bg-cyan-500/20 text-cyan-400 px-1.5 py-0.5 rounded font-mono font-bold">DISPONIBLE</span>
+                        </div>
+                        <p class="text-[11px] text-gray-500">Versión optimizada para la edición de Roblox VNG.</p>
+                    </div>
+                    <a href="https://github.com/israelccc/spider-hub-web/releases/download/V1.0/Delta.Vng-V2.720.1164.2.apk" class="w-full mt-4 text-center text-xs bg-red-600 text-white font-extrabold py-2 rounded-lg hover:bg-red-500 transition-all spider-glow block">
+                        DESCARGAR VNG APK
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="border-t border-white/[0.03] bg-black/60 py-8 text-center text-xs font-mono text-gray-600">
+        &copy; 2026 SPIDER HUB // LINKS DE DESCARGA DIRECTOS.
+    </footer>
+
+    <script>
+        function switchTab(tabName) {
+            const sectionScripts = document.getElementById('section-scripts');
+            const sectionExecutors = document.getElementById('section-executors');
+            const btnScripts = document.getElementById('btn-tab-scripts');
+            const btnExecutors = document.getElementById('btn-tab-executors');
+
+            if (tabName === 'scripts') {
+                sectionScripts.classList.remove('hidden');
+                sectionScripts.classList.add('block');
+                sectionExecutors.classList.remove('block');
+                sectionExecutors.classList.add('hidden');
+
+                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow";
+                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5";
+            } else {
+                sectionExecutors.classList.remove('hidden');
+                sectionExecutors.classList.add('block');
+                sectionScripts.classList.remove('block');
+                sectionScripts.classList.add('hidden');
+
+                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow";
+                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5";
+            }
+        }
+
+        function copyScript(inputId, message) {
+            const inputElement = document.getElementById(inputId);
+            
+            inputElement.classList.remove('hidden');
+            inputElement.select();
+            inputElement.setSelectionRange(0, 99999);
+
+            try {
+                document.execCommand('copy');
+                
+                const toast = document.getElementById('custom-toast');
+                document.getElementById('toast-message').innerText = message;
+                toast.classList.remove('translate-y-24', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+                
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-24', 'opacity-0');
+                }, 2500);
+            } catch (err) {
+                alert("Error al copiar automáticamente.");
+            }
+            
+            inputElement.classList.add('hidden');
+        }
+    </script>
+
+</body>
+</html>
