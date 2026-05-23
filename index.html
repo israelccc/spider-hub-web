@@ -86,36 +86,99 @@
                 <input type="text" id="script-search" onkeyup="filterScripts()" placeholder="Buscar por juego o nombre de script..." class="w-full pl-10 pr-4 py-2.5 bg-black/50 border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 transition-all font-sans">
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="scripts-grid">
-                <div class="script-card p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
-                    <div class="mb-4">
-                        <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block search-target">SpiderHub [DUELS] Murderers VS Sheriffs</span>
-                        <p class="text-xs text-gray-400 mt-2 search-target">Auto-Farm, Teletransporte y selección de misiones.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="scripts-grid">
+                
+                <div class="script-card p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <img src="https://tr.rbxcdn.com/180DAY-b4c26b8c8b52dcf2697da439a8af2929/768/432/Image/Webp/noFilter" alt="Duels" class="w-full sm:w-24 h-28 sm:h-24 object-cover rounded-lg border border-white/10 shrink-0 shadow-md">
+                        <div class="flex flex-col justify-center">
+                            <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block search-target">SpiderHub [DUELS] Murderers VS Sheriffs</span>
+                            <p class="text-xs text-gray-400 mt-2 search-target">Auto-Farm, Teletransporte y selección de misiones.</p>
+                        </div>
                     </div>
                     <button onclick="copyScript('loadstring(game:HttpGet(\'https://gist.githubusercontent.com/israelccc/04288b107da073b84f5d05d665cb64b3/raw/SpiderHUB.DUELS.lua\'))()', '¡Script de SpiderHub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
                         Copiar Script
                     </button>
                 </div>
 
-                <div class="script-card p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
-                    <div class="mb-4">
-                        <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block search-target">Ryshub [DUELS] Murderers VS Sheriffs</span>
-                        <p class="text-xs text-gray-400 mt-2 search-target">Asistencia visual en mapa, configuración de cámara y controles.</p>
+                <div class="script-card p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <img src="https://tr.rbxcdn.com/180DAY-b4c26b8c8b52dcf2697da439a8af2929/768/432/Image/Webp/noFilter" alt="Duels" class="w-full sm:w-24 h-28 sm:h-24 object-cover rounded-lg border border-white/10 shrink-0 shadow-md">
+                        <div class="flex flex-col justify-center">
+                            <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block search-target">Ryshub [DUELS] Murderers VS Sheriffs</span>
+                            <p class="text-xs text-gray-400 mt-2 search-target">Asistencia visual en mapa, configuración de cámara y controles.</p>
+                        </div>
                     </div>
                     <button onclick="copyScript('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/Rysted/scripts/main/MurderersVSSheriffs.lua\'))()', '¡Script de Ryshub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
                         Copiar Script
                     </button>
                 </div>
 
-                <div class="script-card p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
-                    <div class="mb-4">
-                        <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block search-target">Pickaxe Tycoon Script - Auto Farm</span>
-                        <p class="text-xs text-gray-400 mt-2 search-target">Automatización completa de recolección y mejoras automáticas.</p>
+                <div class="script-card p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <img src="https://tr.rbxcdn.com/180DAY-0fc639b5d69c7e81f497e14195ff1cb0/768/432/Image/Webp/noFilter" alt="Pickaxe Tycoon" class="w-full sm:w-24 h-28 sm:h-24 object-cover rounded-lg border border-white/10 shrink-0 shadow-md">
+                        <div class="flex flex-col justify-center">
+                            <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block search-target">Pickaxe Tycoon Script - Auto Farm</span>
+                            <p class="text-xs text-gray-400 mt-2 search-target">Automatización completa de recolección y mejoras automáticas.</p>
+                        </div>
                     </div>
                     <button onclick="copyScript('loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/gumanba/Scripts/main/PickaxeTycoon&quot;))()', '¡Script de Pickaxe Tycoon copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
                         Copiar Script
                     </button>
                 </div>
+
+                <div class="script-card p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCwtsEylNJmmdbktRkyzcAchTtEuT2gXjTa4OjHQAtCA&s=10" alt="Rivals" class="w-full sm:w-24 h-28 sm:h-24 object-cover rounded-lg border border-white/10 shrink-0 shadow-md">
+                        <div class="flex flex-col justify-center">
+                            <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block search-target">Rivals Script NO KEY Aimbot</span>
+                            <p class="text-xs text-gray-400 mt-2 search-target">Función de asistencia de apuntado (Aimbot) directa sin sistema de llaves.</p>
+                        </div>
+                    </div>
+                    <button onclick="copyScript('loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/panelhenil-oss/TASTER-/refs/heads/main/TASTER%202.txt&quot;))()', '¡Script de Rivals copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
+                        Copiar Script
+                    </button>
+                </div>
+
+                <div class="script-card p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuhb2AewWSUSrohUf8ClygJ2tPaCahPB_NYEZW42hX4A&s" alt="Brookhaven" class="w-full sm:w-24 h-28 sm:h-24 object-cover rounded-lg border border-white/10 shrink-0 shadow-md">
+                        <div class="flex flex-col justify-center">
+                            <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block search-target">Sander X Brookhaven 🏡RP</span>
+                            <p class="text-xs text-gray-400 mt-2 search-target">Menú interactivo completo para Brookhaven Roleplay con funciones exclusivas.</p>
+                        </div>
+                    </div>
+                    <button onclick="copyScript('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/kigredns/SanderXV4.2.2/refs/heads/main/New.lua\'))()', '¡Script de Sander X copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
+                        Copiar Script
+                    </button>
+                </div>
+
+                <div class="script-card p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Vtej9_S9fZMX3voggVb6LoEwzxip8ZetqSbarBOloA&s" alt="Speed Hub X" class="w-full sm:w-24 h-28 sm:h-24 object-cover rounded-lg border border-white/10 shrink-0 shadow-md">
+                        <div class="flex flex-col justify-center">
+                            <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block search-target">Speed Hub X Script</span>
+                            <p class="text-xs text-gray-400 mt-2 search-target">Script de optimización de velocidad y múltiples funciones automáticas para diversos juegos.</p>
+                        </div>
+                    </div>
+                    <button onclick="copyScript('loadstring(game:HttpGet(\&quot;https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua\&quot;, true))()', '¡Script de Speed Hub X copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
+                        Copiar Script
+                    </button>
+                </div>
+
+                <div class="script-card p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYW552YrIVxpYLsQHqabkf0gDEjOxxUHDWy2iuhn_MZg&s=10" alt="Jujutsu Shenanigans" class="w-full sm:w-24 h-28 sm:h-24 object-cover rounded-lg border border-white/10 shrink-0 shadow-md">
+                        <div class="flex flex-col justify-center">
+                            <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block search-target">Jujutsu Shenanigans AI Play System</span>
+                            <p class="text-xs text-gray-400 mt-2 search-target">Sistema automatizado de combate (AI Play) y combos optimizados para peleas.</p>
+                        </div>
+                    </div>
+                    <button onclick="copyScript('loadstring(game:HttpGet(&quot;https://rawscripts.net/raw/Jujutsu-Shenanigans-Al-Play-system-200725&quot;))()', '¡Script de Jujutsu Shenanigans copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
+                        Copiar Script
+                    </button>
+                </div>
+
             </div>
         </div>
 
@@ -127,32 +190,40 @@
                 <span class="w-fit px-2 py-1 bg-green-500/10 text-green-400 font-mono text-[10px] rounded uppercase font-bold tracking-wider">VERSION::LATEST</span>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:border-red-500/30 transition-all">
-                    <div>
-                        <div class="flex justify-between items-center mb-2 gap-2">
-                            <h4 class="font-bold text-sm text-white truncate">Delta Mobil</h4>
-                            <span class="text-[9px] bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded font-mono font-bold shrink-0">ONLINE</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                <div class="p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:border-red-500/30 transition-all group">
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <img src="https://i.ytimg.com/vi/ngUNyi8XRJQ/hqdefault.jpg" alt="Delta Mobil" class="w-full sm:w-24 h-28 sm:h-24 object-cover rounded-lg border border-white/10 shrink-0 shadow-md">
+                        <div class="flex flex-col justify-center">
+                            <div class="flex justify-between items-center mb-1 gap-2">
+                                <h4 class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors truncate">Delta Mobil</h4>
+                                <span class="text-[9px] bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded font-mono font-bold shrink-0">ONLINE</span>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">Versión estable estándar para dispositivos Android.</p>
                         </div>
-                        <p class="text-[11px] text-gray-500">Versión estable estándar para dispositivos Android.</p>
                     </div>
-                    <a href="https://github.com/israelccc/spider-hub-web/releases/download/V1.0/Delta-2.721.1108.apk" target="_blank" rel="noopener noreferrer" class="w-full mt-4 text-center text-xs bg-white text-black font-extrabold py-2 rounded-lg hover:bg-gray-200 transition-all block">
+                    <a href="https://github.com/israelccc/spider-hub-web/releases/download/V1.0/Delta-2.721.1108.apk" target="_blank" rel="noopener noreferrer" class="w-full text-center text-xs bg-white text-black font-extrabold py-2.5 rounded-lg hover:bg-gray-200 transition-all block">
                         DESCARGAR APK
                     </a>
                 </div>
 
-                <div class="p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:border-red-500/30 transition-all">
-                    <div>
-                        <div class="flex justify-between items-center mb-2 gap-2">
-                            <h4 class="font-bold text-sm text-white truncate">Delta VNG Mobil</h4>
-                            <span class="text-[9px] bg-cyan-500/20 text-cyan-400 px-1.5 py-0.5 rounded font-mono font-bold shrink-0">DISPONIBLE</span>
+                <div class="p-4 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:border-red-500/30 transition-all group">
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <img src="https://i.ytimg.com/vi/AhljaPtwrLI/maxresdefault.jpg" alt="Delta VNG Mobil" class="w-full sm:w-24 h-28 sm:h-24 object-cover rounded-lg border border-white/10 shrink-0 shadow-md">
+                        <div class="flex flex-col justify-center">
+                            <div class="flex justify-between items-center mb-1 gap-2">
+                                <h4 class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors truncate">Delta VNG Mobil</h4>
+                                <span class="text-[9px] bg-cyan-500/20 text-cyan-400 px-1.5 py-0.5 rounded font-mono font-bold shrink-0">DISPONIBLE</span>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">Versión optimizada para la edición de Roblox VNG.</p>
                         </div>
-                        <p class="text-[11px] text-gray-500">Versión optimizada para la edición de Roblox VNG.</p>
                     </div>
-                    <a href="https://github.com/israelccc/spider-hub-web/releases/download/V1.0/Delta.Vng-V2.720.1164.2.apk" target="_blank" rel="noopener noreferrer" class="w-full mt-4 text-center text-xs bg-red-600 text-white font-extrabold py-2 rounded-lg hover:bg-red-500 transition-all spider-glow block">
+                    <a href="https://github.com/israelccc/spider-hub-web/releases/download/V1.0/Delta.Vng-V2.720.1164.2.apk" target="_blank" rel="noopener noreferrer" class="w-full text-center text-xs bg-red-600 text-white font-extrabold py-2.5 rounded-lg hover:bg-red-500 transition-all spider-glow block">
                         DESCARGAR VNG APK
                     </a>
                 </div>
+
             </div>
         </div>
 
