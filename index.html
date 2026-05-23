@@ -50,10 +50,10 @@
         </p>
 
         <div class="flex bg-black/40 p-2 rounded-2xl border border-white/10 gap-2 z-10 w-full max-w-md mb-12">
-            <button id="btn-tab-scripts" onclick="switchTab('scripts')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow">
+            <button id="btn-tab-scripts" onclick="switchTab('scripts')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer" style="-webkit-tap-highlight-color: transparent;">
                 📜 Catálogo de Scripts
             </button>
-            <button id="btn-tab-executors" onclick="switchTab('executors')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5">
+            <button id="btn-tab-executors" onclick="switchTab('executors')" class="w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer" style="-webkit-tap-highlight-color: transparent;">
                 ⚙ Ejecutores
             </button>
         </div>
@@ -61,7 +61,7 @@
 
     <section class="max-w-4xl mx-auto px-6 pb-24">
         
-        <div id="section-scripts" class="block p-6 md:p-8 rounded-2xl bg-black/40 border border-white/[0.03] hover:border-red-500/20 transition-all duration-300">
+        <div id="section-scripts" style="display: block;" class="p-6 md:p-8 rounded-2xl bg-black/40 border border-white/[0.03] hover:border-red-500/20 transition-all duration-300">
             <div class="flex items-center justify-between mb-6">
                 <h3 class="text-2xl font-bold text-white flex items-center gap-2">
                     <span class="text-red-500">&lt;/&gt;</span> Lista de Scripts
@@ -75,8 +75,7 @@
                         <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block">SpiderHub.lua</span>
                         <p class="text-xs text-gray-400 mt-2">Auto-Farm, Teletransporte y selección de misiones.</p>
                     </div>
-                    <textarea id="code-spider" class="hidden">loadstring(game:HttpGet("https://gist.githubusercontent.com/israelccc/04288b107da073b84f5d05d665cb64b3/raw/SpiderHUB.DUELS.lua"))()</textarea>
-                    <button onclick="copyScript('code-spider', '¡Script de SpiderHub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all">
+                    <button onclick="copyScript('loadstring(game:HttpGet(\'https://gist.githubusercontent.com/israelccc/04288b107da073b84f5d05d665cb64b3/raw/SpiderHUB.DUELS.lua\'))()', '¡Script de SpiderHub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
                         Copiar Script
                     </button>
                 </div>
@@ -86,15 +85,14 @@
                         <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block">Ryshub.lua</span>
                         <p class="text-xs text-gray-400 mt-2">Asistencia visual en mapa, configuración de cámara y controles.</p>
                     </div>
-                    <textarea id="code-rys" class="hidden">loadstring(game:HttpGet("https://raw.githubusercontent.com/Rysted/scripts/main/MurderersVSSheriffs.lua"))()</textarea>
-                    <button onclick="copyScript('code-rys', '¡Script de Ryshub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all">
+                    <button onclick="copyScript('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/Rysted/scripts/main/MurderersVSSheriffs.lua\'))()', '¡Script de Ryshub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
                         Copiar Script
                     </button>
                 </div>
             </div>
         </div>
 
-        <div id="section-executors" class="hidden p-6 md:p-8 rounded-2xl bg-black/40 border border-white/[0.03] hover:border-red-500/20 transition-all duration-300">
+        <div id="section-executors" style="display: none;" class="p-6 md:p-8 rounded-2xl bg-black/40 border border-white/[0.03] hover:border-red-500/20 transition-all duration-300">
             <div class="flex items-center justify-between mb-6">
                 <h3 class="text-2xl font-bold text-white flex items-center gap-2">
                     <span>⚙</span> Descargar Ejecutores
@@ -134,7 +132,7 @@
     </section>
 
     <footer class="border-t border-white/[0.03] bg-black/60 py-8 text-center text-xs font-mono text-gray-600">
-        &copy; 2026 SPIDER HUB // LINKS DE DESCARGA DIRECTOS.
+        &copy; 2026 SPIDER HUB // ENLACES 100% OPERATIVOS.
     </footer>
 
     <script>
@@ -145,51 +143,59 @@
             const btnExecutors = document.getElementById('btn-tab-executors');
 
             if (tabName === 'scripts') {
-                sectionScripts.classList.remove('hidden');
-                sectionScripts.classList.add('block');
-                sectionExecutors.classList.remove('block');
-                sectionExecutors.classList.add('hidden');
+                // Control visual directo sin usar clases propensas a fallos
+                sectionScripts.style.display = 'block';
+                sectionExecutors.style.display = 'none';
 
-                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow";
-                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5";
+                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer";
+                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer";
             } else {
-                sectionExecutors.classList.remove('hidden');
-                sectionExecutors.classList.add('block');
-                sectionScripts.classList.remove('block');
-                sectionScripts.classList.add('hidden');
+                sectionScripts.style.display = 'none';
+                sectionExecutors.style.display = 'block';
 
-                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow";
-                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5";
+                btnExecutors.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 bg-red-600 text-white spider-glow cursor-pointer";
+                btnScripts.className = "w-1/2 py-3 text-sm font-bold rounded-xl transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer";
             }
         }
 
-        function copyScript(textareaId, successMessage) {
-            const area = document.getElementById(textareaId);
-            
-            // Mostrar temporalmente para poder seleccionarlo
-            area.classList.remove('hidden');
-            area.select();
-            area.setSelectionRange(0, 99999);
-
-            try {
-                document.execCommand('copy');
-                
-                const toast = document.getElementById('custom-toast');
-                document.getElementById('toast-message').innerText = successMessage;
-                
-                toast.classList.remove('translate-y-24', 'opacity-0');
-                toast.classList.add('translate-y-0', 'opacity-100');
-                
-                setTimeout(() => {
-                    toast.classList.remove('translate-y-0', 'opacity-100');
-                    toast.classList.add('translate-y-24', 'opacity-0');
-                }, 2500);
-            } catch (err) {
-                alert("Error al copiar, por favor hazlo manualmente.");
+        function copyScript(textToCopy, successMessage) {
+            // Intento con la API moderna del portapapeles
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showToast(successMessage);
+                }).catch(() => {
+                    fallbackCopy(textToCopy, successMessage);
+                });
+            } else {
+                fallbackCopy(textToCopy, successMessage);
             }
+        }
+
+        // Sistema de respaldo ultra-compatible para navegadores móviles antiguos
+        function fallbackCopy(textToCopy, successMessage) {
+            const el = document.createElement('textarea');
+            el.value = textToCopy;
+            el.setAttribute('readonly', '');
+            el.style.position = 'absolute';
+            el.style.left = '-9999px';
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            showToast(successMessage);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('custom-toast');
+            document.getElementById('toast-message').innerText = message;
             
-            // Volver a ocultar
-            area.classList.add('hidden');
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 2500);
         }
     </script>
 
