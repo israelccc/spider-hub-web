@@ -72,28 +72,35 @@
     <section class="max-w-4xl mx-auto px-4 pb-24 overflow-hidden">
         
         <div id="section-scripts" style="display: block;" class="p-5 md:p-8 rounded-2xl bg-black/40 border border-white/[0.03] hover:border-red-500/20 transition-all duration-300 max-w-full">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
                 <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
                     <span class="text-red-500">&lt;/&gt;</span> Lista de Scripts
                 </h3>
                 <span class="w-fit px-2 py-1 bg-red-500/10 text-red-400 font-mono text-[10px] rounded uppercase font-bold tracking-wider">STATUS::SECURE</span>
             </div>
+
+            <div class="mb-6 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="text-gray-500 text-sm">🔍</span>
+                </div>
+                <input type="text" id="script-search" onkeyup="filterScripts()" placeholder="Buscar por juego o nombre de script..." class="w-full pl-10 pr-4 py-2.5 bg-black/50 border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 transition-all font-sans">
+            </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="scripts-grid">
+                <div class="script-card p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
                     <div class="mb-4">
-                        <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block">SpiderHub [DUELS] Murderers VS Sheriffs</span>
-                        <p class="text-xs text-gray-400 mt-2">Auto-Farm, Teletransporte y selección de misiones.</p>
+                        <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block search-target">SpiderHub [DUELS] Murderers VS Sheriffs</span>
+                        <p class="text-xs text-gray-400 mt-2 search-target">Auto-Farm, Teletransporte y selección de misiones.</p>
                     </div>
-                    <button onclick="copyScript('loadstring(game:HttpGet(\'https://gist.githubusercontent.com/israelccc/04288b107da073b84f5d05d665cb64b3/raw/SpiderHUB.DUELS.lua\'))()', '¡Script de SpiderHub copiado!')', '¡Script de SpiderHub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
+                    <button onclick="copyScript('loadstring(game:HttpGet(\'https://gist.githubusercontent.com/israelccc/04288b107da073b84f5d05d665cb64b3/raw/SpiderHUB.DUELS.lua\'))()', '¡Script de SpiderHub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
                         Copiar Script
                     </button>
                 </div>
 
-                <div class="p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+                <div class="script-card p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
                     <div class="mb-4">
-                        <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block">Ryshub [DUELS] Murderers VS Sheriffs</span>
-                        <p class="text-xs text-gray-400 mt-2">Asistencia visual en mapa, configuración de cámara y controles.</p>
+                        <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block search-target">Ryshub [DUELS] Murderers VS Sheriffs</span>
+                        <p class="text-xs text-gray-400 mt-2 search-target">Asistencia visual en mapa, configuración de cámara y controles.</p>
                     </div>
                     <button onclick="copyScript('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/Rysted/scripts/main/MurderersVSSheriffs.lua\'))()', '¡Script de Ryshub copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
                         Copiar Script
@@ -146,6 +153,31 @@
     </footer>
 
     <script>
+        // FILTRADO DINÁMICO DE SCRIPTS
+        function filterScripts() {
+            const input = document.getElementById('script-search');
+            const filter = input.value.toLowerCase();
+            const cards = document.getElementsByClassName('script-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                const targets = cards[i].getElementsByClassName('search-target');
+                let matchFound = false;
+
+                for (let j = 0; j < targets.length; j++) {
+                    if (targets[j].textContent.toLowerCase().includes(filter)) {
+                        matchFound = true;
+                        break;
+                    }
+                }
+
+                if (matchFound) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
         function switchTab(tabName) {
             const sectionScripts = document.getElementById('section-scripts');
             const sectionExecutors = document.getElementById('section-executors');
