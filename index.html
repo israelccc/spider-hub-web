@@ -106,6 +106,16 @@
                         Copiar Script
                     </button>
                 </div>
+
+                <div class="script-card p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl flex flex-col justify-between hover:bg-white/[0.04] transition-all group">
+                    <div class="mb-4">
+                        <span class="font-mono text-base font-bold text-white group-hover:text-red-400 transition-colors block search-target">Pickaxe Tycoon Script - Auto Farm</span>
+                        <p class="text-xs text-gray-400 mt-2 search-target">Automatización completa de recolección y mejoras automáticas.</p>
+                    </div>
+                    <button onclick="copyScript('loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/gumanba/Scripts/main/PickaxeTycoon&quot;))()', '¡Script de Pickaxe Tycoon copiado!')" class="w-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg hover:bg-red-600 hover:text-white transition-all cursor-pointer">
+                        Copiar Script
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -153,7 +163,6 @@
     </footer>
 
     <script>
-        // FILTRADO DINÁMICO DE SCRIPTS
         function filterScripts() {
             const input = document.getElementById('script-search');
             const filter = input.value.toLowerCase();
